@@ -1,5 +1,5 @@
-import { type AnnotationsDTO } from './AnnotationsDTO'
-import { type PlatformDTO } from './PlatformDTO'
+import { type AnnotationsDTO } from './AnnotationsDTO';
+import { type PlatformDTO } from './PlatformDTO';
 
 export interface ReferenceDTO {
   platform?: PlatformDTO

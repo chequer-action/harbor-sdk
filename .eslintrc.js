@@ -1,23 +1,23 @@
 module.exports = {
   env: {
     es2021: true,
-    node: true
+    node: true,
   },
   extends: 'standard-with-typescript',
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
-    project: ['tsconfig.json']
+    project: ['tsconfig.json'],
   },
   rules: {
     'eol-last': ['error', 'always'],
     'no-multiple-empty-lines': 'error',
     semi: ['error', 'always'],
-    'comma-dangle': ['error', 'only-multiline'],
+    'comma-dangle': ['error', 'always-multiline'],
     'space-before-function-paren': ['error', {
       anonymous: 'always',
       named: 'never',
-      asyncArrow: 'always'
+      asyncArrow: 'always',
     }],
   },
   overrides: [
@@ -32,14 +32,14 @@ module.exports = {
         '@typescript-eslint/no-explicit-any': 'error',
         '@typescript-eslint/no-implicit-any-catch': 'error',
         '@typescript-eslint/semi': ['error', 'always'],
-        '@typescript-eslint/comma-dangle': ['error', 'only-multiline'],
+        '@typescript-eslint/comma-dangle': ['error', 'always-multiline'],
         '@typescript-eslint/space-before-function-paren': ['error', {
           anonymous: 'always',
           named: 'never',
-          asyncArrow: 'always'
-        }]
-      }
-    }
+          asyncArrow: 'always',
+        }],
+      },
+    },
   ],
-  ignorePatterns: ['dist', 'lib']
+  ignorePatterns: ['dist', 'lib'],
 };

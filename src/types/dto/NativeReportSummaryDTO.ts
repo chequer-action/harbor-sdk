@@ -1,5 +1,5 @@
-import { type ScannerDTO } from './ScannerDTO'
-import { type VulnerabilitySummaryDTO } from './VulnerabilitySummaryDTO'
+import { type ScannerDTO } from './ScannerDTO';
+import { type VulnerabilitySummaryDTO } from './VulnerabilitySummaryDTO';
 
 export interface NativeReportSummaryDTO {
   scanner?: ScannerDTO

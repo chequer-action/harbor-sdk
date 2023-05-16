@@ -4,6 +4,7 @@ export interface ArtifactTagReference {
   project: string
   repository: string
   tag: string
+  reference: string
 }
 
 export interface ArtifactDigestReference {
@@ -12,6 +13,7 @@ export interface ArtifactDigestReference {
   project: string
   repository: string
   digest: string
+  reference: string
 }
 
 const ARTIFACT_TAG_REFERENCE = /^([\w.-]+)\/([\w.-]+)\/([\w.-]+):(.+)$/;
@@ -27,7 +29,8 @@ export function parseArtifact(artifact: string): ArtifactTagReference | Artifact
       registry,
       project,
       repository,
-      tag
+      tag,
+      reference: tag,
     };
   }
 
@@ -40,7 +43,8 @@ export function parseArtifact(artifact: string): ArtifactTagReference | Artifact
       registry,
       project,
       repository,
-      digest
+      digest,
+      reference: digest,
     };
   }
 

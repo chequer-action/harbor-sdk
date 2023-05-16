@@ -1,3 +1,3 @@
-import { type AdditionLinkDTO } from './AdditionLinkDTO'
+import { type AdditionLinkDTO } from './AdditionLinkDTO';
 
-export type AdditionLinksDTO = Record<string, AdditionLinkDTO | undefined>
+export type AdditionLinksDTO = Record<string, AdditionLinkDTO | undefined>;

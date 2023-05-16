@@ -1,11 +1,11 @@
-import { type TagDTO } from './TagDTO'
-import { type ScanOverviewDTO } from './ScanOverviewDTO'
-import { type LabelDTO } from './LabelDTO'
-import { type AccessoryDTO } from './AccessoryDTO'
-import { type ReferenceDTO } from './ReferenceDTO'
-import { type ExtraAttrsDTO } from './ExtraAttrsDTO'
-import { type AnnotationsDTO } from './AnnotationsDTO'
-import { type AdditionLinksDTO } from './AdditionLinksDTO'
+import { type TagDTO } from './TagDTO';
+import { type ScanOverviewDTO } from './ScanOverviewDTO';
+import { type LabelDTO } from './LabelDTO';
+import { type AccessoryDTO } from './AccessoryDTO';
+import { type ReferenceDTO } from './ReferenceDTO';
+import { type ExtraAttrsDTO } from './ExtraAttrsDTO';
+import { type AnnotationsDTO } from './AnnotationsDTO';
+import { type AdditionLinksDTO } from './AdditionLinksDTO';
 
 export interface ArtifactDTO {
   size?: number
