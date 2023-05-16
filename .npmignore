@@ -1,5 +1,5 @@
-.idea
-node_modules
-tsconfig.json
+node_modules/
+.idea/
+src/
 .eslintrc.js
-src
+tsconfig.json

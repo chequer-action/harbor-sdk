@@ -2,11 +2,12 @@
   "name": "@chequer-public/harbor-sdk",
   "version": "0.0.1",
   "description": "Harbor HTTP Client SDK",
-  "main": "dist/index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "fix": "eslint --fix .",
+    "lint": "eslint",
+    "clean": "rimraf lib",
     "build": "tsc",
-    "clean": "rimraf dist",
     "prepublishOnly": "npm run clean && npm run build"
   },
   "repository": {
