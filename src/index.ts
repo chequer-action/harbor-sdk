@@ -23,3 +23,5 @@ export * from './types/dto/ScannerDTO';
 export * from './types/dto/ScanOverviewDTO';
 export * from './types/dto/TagDTO';
 export * from './types/dto/VulnerabilitySummaryDTO';
+
+export * from './utils/parse';
