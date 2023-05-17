@@ -9,14 +9,18 @@ export class ArtifactClient extends BaseClient {
   public readonly projectName: string;
   public readonly repositoryName: string;
   public readonly reference: string;
+  public readonly registryName: string;
 
   public constructor(repositoryClient: RepositoryClient, reference: string) {
     super(repositoryClient);
 
     this.repositoryClient = repositoryClient;
 
-    this.projectName = repositoryClient.projectName;
-    this.repositoryName = repositoryClient.repositoryName;
+    const { registryName, projectName, repositoryName } = repositoryClient;
+
+    this.registryName = registryName;
+    this.projectName = projectName;
+    this.repositoryName = repositoryName;
     this.reference = reference;
   }
 
@@ -27,12 +31,13 @@ export class ArtifactClient extends BaseClient {
   public async getAsync(): Promise<Artifact> {
     const axios = await this._buildAxios();
 
-    const { projectName, repositoryName, reference } = this;
+    const { registryName, projectName, repositoryName, reference } = this;
 
     try {
       const { data: responseArtifact } = await axios.get<ArtifactDTO>(`/projects/${projectName}/repositories/${repositoryName}/artifacts/${reference}`);
 
       return new Artifact(
+        registryName,
         projectName,
         repositoryName,
         responseArtifact,

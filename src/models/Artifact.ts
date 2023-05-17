@@ -2,12 +2,14 @@ import { type ArtifactDTO } from '../types/dto/ArtifactDTO';
 import { type TagDTO } from '../types/dto/TagDTO';
 
 export class Artifact {
-  readonly projectName: string;
-  readonly repositoryName: string;
-  readonly digest: string;
-  readonly tags: TagDTO[];
+  public readonly registryName: string;
+  public readonly projectName: string;
+  public readonly repositoryName: string;
+  public readonly digest: string;
+  public readonly tags: TagDTO[];
 
-  constructor(projectName: string, repositoryName: string, dto: ArtifactDTO) {
+  public constructor(registryName: string, projectName: string, repositoryName: string, dto: ArtifactDTO) {
+    this.registryName = registryName;
     this.projectName = projectName;
     this.repositoryName = repositoryName;
     if (dto.digest === undefined) {
@@ -16,5 +18,9 @@ export class Artifact {
 
     this.digest = dto.digest;
     this.tags = dto.tags ?? [];
+  }
+
+  public toDigestReference(): string {
+    return `${this.registryName}/${this.projectName}/${this.repositoryName}@${this.digest}`;
   }
 }

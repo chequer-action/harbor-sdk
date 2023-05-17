@@ -5,6 +5,7 @@ import { BaseClient } from './BaseClient';
 export class RepositoryClient extends BaseClient {
   private readonly _projectClient: ProjectClient;
 
+  public readonly registryName: string;
   public readonly projectName: string;
   public readonly repositoryName: string;
 
@@ -13,6 +14,7 @@ export class RepositoryClient extends BaseClient {
 
     this._projectClient = projectClient;
 
+    this.registryName = projectClient.registryName;
     this.projectName = projectClient.projectName;
     this.repositoryName = repositoryName;
   }

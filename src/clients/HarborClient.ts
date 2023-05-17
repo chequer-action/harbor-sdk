@@ -10,14 +10,14 @@ export class HarborClient extends BaseClient {
   // endregion
 
   // region public fields
-  public readonly host: string;
+  public readonly registryName: string;
   // endregion
 
   // region constructor
   public constructor(host: string) {
     super();
 
-    this.host = host;
+    this.registryName = host;
   }
 
   // endregion
@@ -40,7 +40,7 @@ export class HarborClient extends BaseClient {
     const defaults = this._auth?._injectAxios({}) ?? {};
 
     const config = {
-      baseURL: `https://${this.host}/api/v2.0`,
+      baseURL: `https://${this.registryName}/api/v2.0`,
       defaults,
     };
 
