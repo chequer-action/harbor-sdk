@@ -22,13 +22,27 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['*.ts', '*.tsx'],
+      files: ['src/**/*.ts', 'src/**/*.tsx'],
       rules: {
         '@typescript-eslint/no-unsafe-argument': 'error',
         '@typescript-eslint/no-unsafe-assignment': 'error',
         '@typescript-eslint/no-unsafe-member-access': 'error',
         '@typescript-eslint/no-unsafe-return': 'error',
         '@typescript-eslint/no-unsafe-call': 'error',
+        '@typescript-eslint/no-explicit-any': 'error',
+        '@typescript-eslint/no-implicit-any-catch': 'error',
+        '@typescript-eslint/semi': ['error', 'always'],
+        '@typescript-eslint/comma-dangle': ['error', 'always-multiline'],
+        '@typescript-eslint/space-before-function-paren': ['error', {
+          anonymous: 'always',
+          named: 'never',
+          asyncArrow: 'always',
+        }],
+      },
+    },
+    {
+      files: ['__tests__/**/*.ts'],
+      rules: {
         '@typescript-eslint/no-explicit-any': 'error',
         '@typescript-eslint/no-implicit-any-catch': 'error',
         '@typescript-eslint/semi': ['error', 'always'],
