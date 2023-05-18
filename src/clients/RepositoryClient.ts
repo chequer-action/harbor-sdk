@@ -1,7 +1,6 @@
 import { type ProjectClient } from './ProjectClient';
 import { ArtifactClient } from './ArtifactClient';
 import { BaseClient } from './BaseClient';
-import { Artifact } from '../models/Artifact';
 
 export class RepositoryClient extends BaseClient {
   private readonly _projectClient: ProjectClient;
@@ -28,9 +27,13 @@ export class RepositoryClient extends BaseClient {
     return new ArtifactClient(this, 'digest', digest);
   }
 
+  public artifactByReference(type: 'tag' | 'digest', reference: string): ArtifactClient {
+    return new ArtifactClient(this, type, reference);
+  }
+
   /**
-   * @deprecated
-   */
+     * @deprecated
+     */
   public artifact(reference: string): ArtifactClient {
     const DIGEST_REGEX = /^sha256:[0-9a-fA-F]+$/;
 
