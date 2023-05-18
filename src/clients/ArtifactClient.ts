@@ -10,8 +10,9 @@ export class ArtifactClient extends BaseClient {
   public readonly repositoryName: string;
   public readonly reference: string;
   public readonly registryName: string;
+  private readonly referenceType: 'tag' | 'digest';
 
-  public constructor(repositoryClient: RepositoryClient, reference: string) {
+  public constructor(repositoryClient: RepositoryClient, referenceType: 'tag' | 'digest', reference: string) {
     super(repositoryClient);
 
     this.repositoryClient = repositoryClient;
@@ -21,6 +22,7 @@ export class ArtifactClient extends BaseClient {
     this.registryName = registryName;
     this.projectName = projectName;
     this.repositoryName = repositoryName;
+    this.referenceType = referenceType;
     this.reference = reference;
   }
 
@@ -108,6 +110,20 @@ export class ArtifactClient extends BaseClient {
       await axios.delete(`/projects/${projectName}/repositories/${repositoryName}/artifacts/${reference}/tags/${tagName}`);
     } catch (e: unknown) {
       console.error(`Failed to remove '${tagName}' tag: ${this.getLogName()}`);
+      throw e;
+    }
+  }
+
+  public async copyToAsync(copyToProjectName: string, copyToRepositoryName: string): Promise<void> {
+    const axios = await this._buildAxios();
+
+    const delimiter = this.referenceType === 'tag' ? ':' : '@';
+    const from = `${this.projectName}/${this.repositoryName}${delimiter}${this.reference}`;
+
+    try {
+      await axios.post(`/projects/${copyToProjectName}/repositories/${copyToRepositoryName}/artifacts?from=${encodeURIComponent(from)}`);
+    } catch (e: unknown) {
+      console.error(`Failed to copy artifact to '${copyToProjectName}/${copyToRepositoryName}' from: ${this.getLogName()}`);
       throw e;
     }
   }
