@@ -71,17 +71,19 @@ export class ArtifactClient extends BaseClient {
     }
   }
 
-  public async pruneAsync(): Promise<void> {
+  public async pruneAsync(): Promise<boolean> {
     const artifact = await this.getAsync();
 
     if (artifact.tags.length !== 0) {
       console.log(`Prune artifact: artifact not removed (${artifact.tags.length} tags remaining): ${this.getLogName()}`);
-      return;
+      return false;
     }
 
     await this.repositoryClient
-      .artifact(artifact.digest)
+      .artifactByDigest(artifact.digest)
       .removeAsync();
+
+    return true;
   }
 
   public async addTagAsync(tagName: string): Promise<void> {
