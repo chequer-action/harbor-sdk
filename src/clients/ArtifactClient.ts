@@ -105,7 +105,7 @@ export class ArtifactClient extends BaseClient {
     const { projectName, repositoryName, reference } = this;
 
     try {
-      await axios.post(`/projects/${projectName}/repositories/${repositoryName}/artifacts/${reference}/tags/${tagName}`);
+      await axios.delete(`/projects/${projectName}/repositories/${repositoryName}/artifacts/${reference}/tags/${tagName}`);
     } catch (e: unknown) {
       console.error(`Failed to remove '${tagName}' tag: ${this.getLogName()}`);
       throw e;
