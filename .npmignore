@@ -4,3 +4,4 @@ src/
 .eslintrc.js
 tsconfig.json
 /lib/__test__
+*.env
