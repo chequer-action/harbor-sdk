@@ -36,7 +36,7 @@ export function parseArtifact(artifact: string): ArtifactTagReference | Artifact
 
   const digestMatch = artifact.match(ARTIFACT_DIGEST_REFERENCE);
   if (digestMatch !== null) {
-    const [, registry, project, repository, digest] = ARTIFACT_TAG_REFERENCE as unknown as string[];
+    const [, registry, project, repository, digest] = digestMatch;
 
     return {
       type: 'digest',
