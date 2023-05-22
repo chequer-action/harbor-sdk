@@ -1,6 +1,6 @@
 {
   "name": "@chequer-public/harbor-sdk",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Harbor HTTP Client SDK",
   "main": "lib/index.js",
   "scripts": {
